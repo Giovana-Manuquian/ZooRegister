@@ -1,6 +1,5 @@
 package br.senai.sp.jandira.model;
 
-import javax.swing.*;
 import java.util.Scanner;
 
 public class Menu {
@@ -17,7 +16,7 @@ public class Menu {
 
         boolean continuar = true;
 
-        while (continuar) {
+        while(continuar){
             System.out.println("*********************************************");
             System.out.println("|            Seja Bem-Vindo ao Zoo          |");
             System.out.println("*********************************************");
@@ -32,9 +31,9 @@ public class Menu {
             int optionUser = scanner.nextInt();
             scanner.nextLine();
 
-            switch (optionUser) {
+            switch (optionUser){
                 case 1:
-                    System.out.println("1 - Registrar Mamíferos\n" +
+                    System.out.println("1 - Registrar Mamífero\n" +
                             "2 - Registrar Aves\n" +
                             "3 - Registrar Répteis\n" +
                             "4 - Voltar para o menu principal"
@@ -44,7 +43,7 @@ public class Menu {
                     int optionRegistrarAnimal = scanner.nextInt();
                     scanner.nextLine();
 
-                    switch (optionRegistrarAnimal) {
+                    switch (optionRegistrarAnimal){
                         case 1:
                             Mamiferos mamiferos = new Mamiferos();
                             mamiferos.registrarMamiferos();
@@ -76,7 +75,7 @@ public class Menu {
                     int optionListarAnimal = scanner.nextInt();
                     scanner.nextLine();
 
-                    switch (optionListarAnimal) {
+                    switch (optionListarAnimal){
                         case 1:
                             refListMamiferos.listarMamiferos();
                             break;
@@ -102,7 +101,7 @@ public class Menu {
                     int optionAddAlojamentoAnimal = scanner.nextInt();
                     scanner.nextLine();
 
-                    switch (optionAddAlojamentoAnimal) {
+                    switch (optionAddAlojamentoAnimal){
                         case 1:
                             Mamiferos mamiferos = new Mamiferos();
                             refAlojamentoMamiferos.adicionarMamiferos(mamiferos);
@@ -127,6 +126,9 @@ public class Menu {
                     continuar = false;
                     break;
             }
+        }
+    }
+}
 
 //            // Verificar Mamíferos
 //            for (Mamiferos mamifero : refListMamiferos.listMamiferos) {
@@ -157,6 +159,3 @@ public class Menu {
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-        }
-    }
-}

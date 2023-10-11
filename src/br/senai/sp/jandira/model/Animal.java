@@ -83,6 +83,17 @@ public class Animal {
 //        return false;
 //    }
 
+    public void setDataUltimaRevisao(LocalDate data) {
+        this.dataRevisao = data;
+    }
+    public Period tempoDesdeUltimaVisita() {
+        LocalDate dataAtual = LocalDate.now();
+        if (dataRevisao != null) {
+            return Period.between(dataRevisao, dataAtual);
+        } else {
+            return null;
+        }
+    }
 }
 
 
