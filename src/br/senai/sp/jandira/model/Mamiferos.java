@@ -9,12 +9,6 @@ import java.util.Scanner;
 public class Mamiferos extends Animal {
    Scanner scanner = new Scanner(System.in);
    List<Mamiferos> listMamiferos = new ArrayList<>();
-
-//   public Mamiferos(){
-//       String tipo = "mamifero";
-//       super
-//   }
-
    public void registrarMamiferos(){
        System.out.println("****************************");
        System.out.println("    Registro de Mamiferos   ");

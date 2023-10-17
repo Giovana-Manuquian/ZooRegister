@@ -41,7 +41,7 @@ public class Repteis extends Animal {
 
     public void listarRepteis(){
         for (Repteis repteis : listRepteis){
-            System.out.println("____________________________________");
+            System.out.println("______________________________________________________________");
             System.out.println("Nome: " + repteis.getNome());
             System.out.println("Idade: " + repteis.getIdade());
             System.out.println("Sexo: " + repteis.getSexo());
@@ -49,6 +49,7 @@ public class Repteis extends Animal {
             System.out.println("Histórico Médico: " + repteis.getHistoricoMedico());
             System.out.println("Data Revisão Médica: " + repteis.getDataRevisao());
             System.out.println("Medicações Prescritas: " + repteis.getMedicacoesPrescritas());
+            System.out.println("______________________________________________________________");
         }
     }
 }

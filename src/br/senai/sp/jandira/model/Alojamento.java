@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Alojamento {
-
     List<Mamiferos> alojamentoMamiferos = new ArrayList<>();
     List<Aves> alojamentoAves = new ArrayList<>();
     List<Repteis> alojamentoRepteis = new ArrayList<>();

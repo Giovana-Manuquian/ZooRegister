@@ -41,7 +41,7 @@ public class Aves extends Animal {
 
     public void listarAves(){
         for (Aves aves : listAves){
-            System.out.println("____________________________________");
+            System.out.println("________________________________________________________");
             System.out.println("Nome: " + aves.getNome());
             System.out.println("Idade: " + aves.getIdade());
             System.out.println("Sexo: " + aves.getSexo());
@@ -49,6 +49,7 @@ public class Aves extends Animal {
             System.out.println("Histórico Médico: " + aves.getHistoricoMedico());
             System.out.println("Data Revisão Médica: " + aves.getDataRevisao());
             System.out.println("Medicações Prescritas: " + aves.getMedicacoesPrescritas());
+            System.out.println("________________________________________________________");
         }
     }
 }

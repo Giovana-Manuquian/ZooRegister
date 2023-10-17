@@ -1,7 +1,10 @@
 package br.senai.sp.jandira.model;
 
+import javax.swing.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class Animal {
@@ -66,32 +69,40 @@ public class Animal {
         this.dataRevisao = dataRevisao;
     }
 
-//    public Period tempoDesdeUltimaVisita() {
-//        LocalDate dataAtual = LocalDate.now();
-//        if (dataRevisao != null) {
-//            return Period.between(dataRevisao, dataAtual);
-//        } else {
-//            return null;
-//        }
-//    }
-//
-//    public boolean VisitaVeterinario() {
-//        Period periodoDesdeUltimaVisita = tempoDesdeUltimaVisita();
-//        if (periodoDesdeUltimaVisita != null && periodoDesdeUltimaVisita.getYears() >= 1) {
-//            return true;
-//        }
-//        return false;
-//    }
+    public void verificarVisitaVeterinaria() {
+        LocalDateTime dataAtual = LocalDateTime.now();
+        LocalDateTime dataUltimaVisita = getDataRevisao().atStartOfDay();
 
-    public void setDataUltimaRevisao(LocalDate data) {
-        this.dataRevisao = data;
+        // Calcula a diferença em anos
+        long anosDesdeUltimaVisita = ChronoUnit.YEARS.between(dataUltimaVisita, dataAtual);
+
+        // Verifica se passou exatamente 1 ano desde a última visita
+        if (anosDesdeUltimaVisita >= 1) {
+            JOptionPane.showMessageDialog(null, "Hora de passar no Veterinário: " + getNome(), "VisitaVeterinário!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
-    public Period tempoDesdeUltimaVisita() {
-        LocalDate dataAtual = LocalDate.now();
-        if (dataRevisao != null) {
-            return Period.between(dataRevisao, dataAtual);
-        } else {
-            return null;
+
+    public void data(Mamiferos mamiferos, Aves aves, Repteis repteis) {
+        LocalDateTime dataAtual = LocalDateTime.now();
+        LocalDateTime dataUltimaVisita = null;
+
+        if (mamiferos != null) {
+            dataUltimaVisita = mamiferos.getDataRevisao().atStartOfDay();
+        } else if (aves != null) {
+            dataUltimaVisita = aves.getDataRevisao().atStartOfDay();
+        } else if (repteis != null) {
+            dataUltimaVisita = repteis.getDataRevisao().atStartOfDay();
+        }
+
+        if (dataUltimaVisita != null) {
+            // Calcula a diferença em anos
+            long anosDesdeUltimaVisita = ChronoUnit.YEARS.between(dataUltimaVisita, dataAtual);
+
+            if (anosDesdeUltimaVisita >= 1) {
+                System.out.println("Hora de passar no veterinário");
+            } else {
+                System.out.println("Está tudo certo");
+            }
         }
     }
 }

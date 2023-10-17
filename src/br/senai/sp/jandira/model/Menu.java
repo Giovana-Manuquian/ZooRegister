@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.model;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,13 +19,14 @@ public class Menu {
 
         while(continuar){
             System.out.println("*********************************************");
-            System.out.println("|            Seja Bem-Vindo ao Zoo          |");
+            System.out.println("|          Seja Bem-Vindo(a) ao Zoo         |");
             System.out.println("*********************************************");
             System.out.println("Informe a opção que deseja seguir: \n" +
                     "1 - Registrar Animais\n" +
                     "2 - Listar Animais\n" +
                     "3 - Adicionar Alojamento\n" +
-                    "4 - Sair"
+                    "4 - Datas Cadastradas\n" +
+                    "5 - Sair"
             );
             System.out.print("Opção: ");
 
@@ -48,16 +50,25 @@ public class Menu {
                             Mamiferos mamiferos = new Mamiferos();
                             mamiferos.registrarMamiferos();
                             refListMamiferos.adicionarMamiferos(mamiferos);
+
+                            // Após registrar, verifique a visita ao veterinário
+                            mamiferos.verificarVisitaVeterinaria();
                             break;
                         case 2:
                             Aves aves = new Aves();
                             aves.registrarAves();
                             refListAves.adicionarAves(aves);
+
+                            // Após registrar, verifique a visita ao veterinário
+                            aves.verificarVisitaVeterinaria();
                             break;
                         case 3:
                             Repteis repteis = new Repteis();
                             repteis.registrarMamifero();
                             refListRepteis.adicionarRepteis(repteis);
+
+                            // Após registrar, verifique a visita ao veterinário
+                            repteis.verificarVisitaVeterinaria();
                             break;
                         case 4:
                             // Voltar para o menu principal
@@ -122,40 +133,23 @@ public class Menu {
                             break;
                     }
                     break;
+
                 case 4:
+                    for (Mamiferos mamiferos : refListMamiferos.listMamiferos) {
+                        mamiferos.data(mamiferos, null, null);
+                    }
+                    for (Aves aves : refListAves.listAves) {
+                        aves.data(null, aves, null);
+                    }
+                    for (Repteis repteis : refListRepteis.listRepteis) {
+                        repteis.data(null, null, repteis);
+                    }
+                    break;
+
+                case 5:
                     continuar = false;
                     break;
             }
         }
     }
 }
-
-//            // Verificar Mamíferos
-//            for (Mamiferos mamifero : refListMamiferos.listMamiferos) {
-//                if (mamifero.VisitaVeterinario()) {
-//                    JOptionPane.showMessageDialog(null, "Hora de passar no Veterinário - " + mamifero.getNome(), "Visita Veterinário!", JOptionPane.INFORMATION_MESSAGE);
-//                }
-//            }
-//
-//            // Verificar Aves
-//            for (Aves ave : refListAves.listAves) {
-//                if (ave.VisitaVeterinario()) {
-//                    JOptionPane.showMessageDialog(null, "Hora de passar no Veterinário - " + ave.getNome(), "Visita Veterinário!", JOptionPane.INFORMATION_MESSAGE);
-//                }
-//            }
-//
-//            // Verificar Répteis
-//            for (Repteis reptil : refListRepteis.listRepteis) {
-//                if (reptil.VisitaVeterinario()) {
-//                    JOptionPane.showMessageDialog(null, "Hora de passar no Veterinário - " + reptil.getNome(), "Visita Veterinário!", JOptionPane.INFORMATION_MESSAGE);
-//                }
-//            }
-//
-//            // Repita o processo para outras listas de animais, como Aves e Répteis
-//
-//            // Aguarde um tempo antes de verificar novamente (por exemplo, a cada dia)
-//            try {
-//                Thread.sleep(3 * 60 * 1000); // Aguardar 3 minutos
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
